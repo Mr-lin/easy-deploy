@@ -10,7 +10,7 @@ maven pom.xml 中引入
 ```xml
 <build>
 <plugin>
-    <groupId>com.github.mrlin</groupId>
+    <groupId>com.github.Mr-lin</groupId>
     <artifactId>easy-deploy</artifactId>
     <version>1.0</version>
     <configuration>

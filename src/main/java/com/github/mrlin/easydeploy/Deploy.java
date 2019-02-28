@@ -1,4 +1,4 @@
-package com.github.mrlin;
+package com.github.mrlin.easydeploy;
 
 import com.jcraft.jsch.*;
 
@@ -7,8 +7,7 @@ import java.util.Properties;
 
 /**
  * @author linzhiwei
- * @Description:
- * @date 2019/2/26 11:28
+ * @version 1.0
  */
 public class Deploy {
 
@@ -27,8 +26,8 @@ public class Deploy {
     /**
      * 上传文件到远程服务器
      *
-     * @param src
-     * @param dst
+     * @param src 源文件地址
+     * @param dst 目标地址
      * @return
      */
     public boolean uploadFile(String src, String dst) {

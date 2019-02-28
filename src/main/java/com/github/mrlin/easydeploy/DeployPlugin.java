@@ -1,4 +1,4 @@
-package com.github.mrlin;
+package com.github.mrlin.easydeploy;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -8,8 +8,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 
 /**
  * @author linzhiwei
- * @Description:
- * @date 2019/2/26 9:39
+ * @version 1.0
  */
 @Mojo(name = "java-deploy")
 public class DeployPlugin extends AbstractMojo {
