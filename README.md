@@ -33,3 +33,5 @@ host 远程地址 user 账号 password 密码 remoteDeployDir 远程部署的路
 ## 使用
 
 ![](img/1.jpg)
+
+## [demo](https://github.com/Mr-lin/easydeploydemo)
