@@ -19,9 +19,9 @@ public class DeployPlugin extends AbstractMojo {
     private String user;
     @Parameter
     private String password;
-    @Parameter
+    @Parameter(defaultValue = "${project.build.finalName}.${pom.packaging}")
     private String targetName;
-    @Parameter
+    @Parameter(defaultValue = "${project.build.directory}\\${project.build.finalName}.${pom.packaging}")
     private String targetDir;
     @Parameter
     private String remoteDeployDir;
@@ -31,7 +31,7 @@ public class DeployPlugin extends AbstractMojo {
     private String deployScript;
     @Parameter
     private String logPath;
-    @Parameter(defaultValue = "false")
+    @Parameter
     private boolean isRoot;
 
     @Override
@@ -52,18 +52,18 @@ public class DeployPlugin extends AbstractMojo {
         StringBuffer cmd = new StringBuffer();
         cmd.append(String.format("cd %s;",remoteDeployDir));
         if (isRoot){
-            cmd.append(String.format("mv /tmp/%s ./;",targetName));
-            cmd.append(String.format("./%s",deployScript));
+            cmd.append(String.format("mv -f /tmp/%s ./;",targetName));
+            cmd.append(String.format("%s",deployScript));
         }else {
-            cmd.append(String.format("echo %s|sudo -S mv /tmp/%s ./;",password,targetName));
-            cmd.append(String.format("echo %s|sudo -S ./%s",password,deployScript));
+            cmd.append(String.format("echo %s|sudo -S mv -f /tmp/%s ./;",password,targetName));
+            cmd.append(String.format("echo %s|sudo -S %s",password,deployScript));
         }
-        if (!"".equals(deployScriptParameter)){
+        if (deployScriptParameter!=null&&!"".equals(deployScriptParameter)){
             cmd.append(" "+deployScriptParameter);
         }
         System.out.println("cmd:"+cmd.toString());
         deploy.shell(cmd.toString());
-        if (!"".equals(logPath)){
+        if (logPath!=null&&!"".equals(logPath)){
             deploy.shell("tail -f "+logPath);
         }
         deploy.disconnect();
