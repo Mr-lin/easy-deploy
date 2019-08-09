@@ -6,6 +6,8 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
+import java.io.File;
+
 /**
  * @author linzhiwei
  * @version 1.0
@@ -21,7 +23,7 @@ public class DeployPlugin extends AbstractMojo {
     private String password;
     @Parameter(defaultValue = "${project.build.finalName}.${pom.packaging}")
     private String targetName;
-    @Parameter(defaultValue = "${project.build.directory}\\${project.build.finalName}.${pom.packaging}")
+    @Parameter(defaultValue = "${project.build.directory}")
     private String targetDir;
     @Parameter
     private String remoteDeployDir;
@@ -40,7 +42,7 @@ public class DeployPlugin extends AbstractMojo {
         //netstat -tunlp |grep 41020 |grep -v grep|awk '{print $7}'|awk -F '/java' '{print $1}'
 
         Deploy deploy = new Deploy(host,user,password);
-        System.out.println(String.format("host:%s user:%s password:%s targetDir:%s",host,user,password,targetDir));
+        System.out.println(String.format("host:%s user:%s password:%s targetDir:%s targetName:%s",host,user,password,targetDir,targetName));
 //        String osname = System.getProperty("os.name").toLowerCase();
 //        String mvn = osname.contains("windows")?"mvn.cmd":"mvn";
 //        int re = deploy.sysExecute(mvn+" -f E:\\projects\\esnotary-github-nzsign-v1.0\\pom.xml clean package -Pdev -Dmaven.github.skip=true");
@@ -48,7 +50,7 @@ public class DeployPlugin extends AbstractMojo {
 //            System.err.println("package error");
 //            System.exit(-1);
 //        }
-        deploy.uploadFile(targetDir,"/tmp");
+        deploy.uploadFile(targetDir+ File.separator + targetName,"/tmp");
         StringBuffer cmd = new StringBuffer();
         cmd.append(String.format("cd %s;",remoteDeployDir));
         if (isRoot){
