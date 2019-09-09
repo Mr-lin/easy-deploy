@@ -12,15 +12,13 @@ maven pom.xml 中引入
 <plugin>
     <groupId>com.github.Mr-lin</groupId>
     <artifactId>easy-deploy</artifactId>
-    <version>1.0</version>
+    <version>1.0.2</version>
     <configuration>
         <host>192.168.1.1</host>
         <user>user</user>
         <password>password</password>
-      <targetDir>${project.build.directory}\${project.build.finalName}.${pom.packaging}		</targetDir>
-        <targetName>${project.build.finalName}.${pom.packaging}</targetName>
         <remoteDeployDir>/home/projects/test</remoteDeployDir>
-        <deployScript>start.sh</deployScript>
+        <deployScript>/home/projects/test/start.sh</deployScript>
         <logPath>/home/projects/test/log/log.log</logPath>
     </configuration>
 </plugin>
