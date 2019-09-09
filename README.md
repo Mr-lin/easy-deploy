@@ -29,6 +29,7 @@ maven pom.xml 中引入
 host 远程地址 user 账号 password 密码 remoteDeployDir 远程部署的路径 deployScript 路径下的部署脚本 logPath 日志路径
 
 ## 使用
+先将项目编译打包好，然后执行plugins下的easy-deploy
 
 ![](img/1.jpg)
 
