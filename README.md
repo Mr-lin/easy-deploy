@@ -30,11 +30,12 @@ host 远程地址 user 账号 password 密码 remoteDeployDir 远程部署的路
 
 ## 使用
 先将项目编译打包好，然后执行plugins下的easy-deploy
+
+![](img/1.jpg)
+
 或者直接项目路径下执行命令
 ```bash
 mvn clean package -Dmaven.test.skip=true com.github.Mr-lin:easy-deploy:版本号:java-deploy
 ```
-
-![](img/1.jpg)
 
 ## [demo](https://github.com/Mr-lin/easydeploydemo)
